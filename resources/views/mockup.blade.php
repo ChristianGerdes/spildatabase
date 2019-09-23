@@ -33,7 +33,7 @@
         <div class="container mx-auto">
             <div class="border-b pb-6 mb-6">
                 <h1 class="text-4xl">SIEGE</h1>
-                <div>17 resultater</div>
+                <div>17 resultater.</div>
             </div>
 
             <div class="flex flex-wrap">

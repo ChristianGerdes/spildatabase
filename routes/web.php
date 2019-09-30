@@ -1,3 +1,4 @@
 <?php
 
-Route::view('/mockup', 'mockup');Route::resource('contributors', 'ContributorsController');
+Route::resource('games', 'GamesController');
+Route::resource('contributors', 'ContributorsController');

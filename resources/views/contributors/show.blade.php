@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="border-b pb-6 mb-6">
-        <h1 class="text-4xl">{{ $contributor->name }}</h1>
-        <div class="text-sm text-gray-500">
-            Contributed to <span class="bg-blue-100 text-blue-500 p-1 rounded-lg">{{ $contributor->credits_count }}</span> games in total
+    <div class="border-b flex items-center pb-8 mb-8">
+        <img class="w-24 h-24 rounded-full mr-6" src="https://www.biography.com/.image/t_share/MTY2MzU3Nzk2OTM2MjMwNTkx/elon_musk_royal_society.jpg" alt="">
+
+        <div>
+            <h1 class="text-4xl">{{ $contributor->name }}</h1>
+            <div class="text-sm text-gray-500">
+                Contributed to <span class="bg-blue-100 text-blue-500 p-1 rounded-lg">{{ $contributor->credits_count }}</span> games in total
+            </div>
         </div>
     </div>
 

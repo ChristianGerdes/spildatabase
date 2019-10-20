@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Game;
 use App\Imports\GamesImport;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
@@ -29,6 +30,8 @@ class ImportGames extends Command
      */
     public function handle()
     {
+        Game::disableSearchSyncing();
+
         Excel::import(new GamesImport, public_path('files/games.csv'), null, \Maatwebsite\Excel\Excel::CSV);
     }
 }

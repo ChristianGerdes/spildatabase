@@ -4,30 +4,88 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-        <title>Mockup</title>
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"/>
+        <title>Spildatabase</title>
     </head>
-    <body class="bg-gray-100 font-sans text-gray-800">
+    <body class="bg-gray-100 font-sans text-gray-800 leading-tight antialiased">
         <div id="app">
             <div>
-                <header class="bg-white border-b py-4 mb-12">
-                    <div class="container mx-auto flex">
-                        <div class="w-1/4"></div>
+                <header class="bg-white border-b mb-12">
+                    <div class="container mx-auto flex justify-between">
+                        <div class="flex">
+                            <a href="{{ route('games.index') }}" class="flex items-center mr-20">
+                                <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg"viewBox="0 0 1000 1000">
+                                    <path d="M146 161h470v94H146z" class="st0"/>
+                                    <path d="M146 161h94v658h-94z" class="st0"/>
+                                    <path d="M193 255h47v47h-47zM146 302h47v47h-47zM193 302h47v47h-47zM146 349h47v47h-47zM193 349h47v47h-47zM146 396h47v47h-47zM193 396h47v47h-47zM146 443h47v47h-47zM193 443h47v47h-47zM146 490h47v47h-47zM193 490h47v47h-47zM146 537h47v47h-47zM193 537h47v47h-47zM146 584h47v47h-47zM193 584h47v47h-47zM146 631h47v47h-47zM193 631h47v47h-47zM146 678h47v47h-47zM193 678h47v47h-47zM146 725h47v47h-47zM193 725h47v47h-47zM146 772h47v47h-47zM193 772h47v47h-47zM616 255h47v47h-47zM663 255h47v47h-47zM616 302h47v47h-47z" class="st0"/>
+                                    <path d="M616 255h94v94h-94zM663 114h94v94h-94z" class="st0"/>
+                                    <path d="M710 114h47v47h-47zM663 161h47v47h-47zM710 161h47v47h-47zM710 349h47v47h-47z" class="st0"/>
+                                    <path d="M710 349h94v470h-94z" class="st0"/>
+                                    <path d="M710 396h47v47h-47zM757 396h47v47h-47zM710 443h47v47h-47zM757 443h47v47h-47zM710 490h47v47h-47zM757 490h47v47h-47zM710 537h47v47h-47zM757 537h47v47h-47zM710 584h47v47h-47zM757 584h47v47h-47zM710 631h47v47h-47zM757 631h47v47h-47zM710 678h47v47h-47zM757 678h47v47h-47zM710 725h47v47h-47zM757 725h47v47h-47zM710 772h47v47h-47z" class="st0"/>
+                                    <path d="M146 725h658v94H146z" class="st0"/>
+                                    <path d="M616 725h47v47h-47zM663 725h47v47h-47zM616 772h47v47h-47zM663 772h47v47h-47zM522 725h47v47h-47zM569 725h47v47h-47zM522 772h47v47h-47zM569 772h47v47h-47zM428 725h47v47h-47zM475 725h47v47h-47zM428 772h47v47h-47zM475 772h47v47h-47zM334 725h47v47h-47zM381 725h47v47h-47zM334 772h47v47h-47zM381 772h47v47h-47zM240 725h47v47h-47zM287 725h47v47h-47zM240 772h47v47h-47zM287 772h47v47h-47zM804 208h47v47h-47zM851 67h47v47h-47z" class="st0"/>
+                                </svg>
+                            </a>
 
-                        <form action="{{ route('games.index') }}" method="GET" class="flex-1">
-                            <label class="relative block">
-                                <div class="inset-y-0 absolute left-0 flex items-center justify-center px-4">
-                                    <svg class="fill-current text-gray-600 w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
-                                    </svg>
+                            <nav class="flex">
+                                <a href="{{ route('games.index') }}" class="flex items-center px-5 py-6 hover:bg-gray-100">
+                                    <div>Find spil</div>
+                                </a>
+
+                                <a href="{{ route('games.popular') }}" class="flex items-center px-5 py-6 hover:bg-gray-100">
+                                    <div>Populære spil</div>
+                                </a>
+
+                                <a href="{{ route('games.newest') }}" class="flex items-center px-5 py-6 hover:bg-gray-100">
+                                    <div>Nyeste spil</div>
+                                </a>
+
+                                <a href="{{ route('publishers.index') }}" class="flex items-center px-5 py-6 hover:bg-gray-100">
+                                    <div>Udgivere</div>
+                                </a>
+                            </nav>
+                        </div>
+
+                        <div class="flex">
+                            @if (auth()->guest())
+                                <a href="{{ route('users.create') }}" class="flex items-center px-5 py-6 hover:bg-gray-100">
+                                    <div>Opret bruger</div>
+                                </a>
+
+                                <a href="{{ route('login') }}" class="flex items-center px-5 py-6 hover:bg-gray-100">
+                                    <div>Log ind</div>
+                                </a>
+                            @else
+                                <a href="{{ route('games.create') }}" class="flex items-center px-5 py-6 hover:bg-gray-100">
+                                    <div>Tilføj spil</div>
+                                </a>
+
+                                <div class="flex flex-col items-center group">
+                                    <div class="px-5 py-6">
+                                        {{ auth()->user()->name }}
+                                    </div>
+                                    <div class="relative w-full">
+                                        <div class="absolute whitespace-no-wrap bg-white rounded rounded-t-none border border-gray-300 right-0 top-0 right-0 hidden group-hover:block">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('reviews.index') }}" class="px-6 py-3 block text-sm hover:bg-gray-100">Gennemgå spil</a>
+                                                </li>
+
+                                                @if (auth()->user()->isAdmin())
+                                                    <li>
+                                                        <a href="{{ route('admins.index') }}" class="px-6 py-3 block text-sm hover:bg-gray-100">Admins</a>
+                                                    </li>
+                                                @endif
+
+                                                <li>
+                                                    <a href="{{ route('sessions.destroy') }}" class="px-6 py-3 block text-sm hover:bg-gray-100">Log ud</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <input name="q" placeholder="Søg efter spil" class="bg-gray-200 text-gray-600 pl-12 rounded py-3 pr-4 focus:outline-none w-full">
-                            </label>
-                        </form>
-
-                        <div class="w-1/4 flex justify-end">
-                            <div class="w-12 h-12 rounded-full bg-gray-200"></div>
+                            @endif
                         </div>
                     </div>
                 </header>

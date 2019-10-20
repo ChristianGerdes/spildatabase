@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContributorsTable extends Migration
+class CreatePublishersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateContributorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contributors', function (Blueprint $table) {
+        Schema::create('publishers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('name');
-            $table->text('url')->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateContributorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contributors');
+        Schema::dropIfExists('publishers');
     }
 }

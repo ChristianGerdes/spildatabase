@@ -5,6 +5,7 @@ namespace App\Imports;
 use Carbon\Carbon;
 use App\Models\Game;
 use App\Models\Platform;
+use App\Models\Publisher;
 use App\Models\Contributor;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -17,7 +18,9 @@ class GamesImport implements ToModel, WithHeadingRow, WithChunkReading
     {
         $attributes = [
             'title' => $row['navn'],
+            'notes' => $row['noter'],
             'url' => $row['spilllets_url'],
+            'published' => true
         ];
 
         if (Str::contains($row['sorteringsar'], '/')) {
@@ -27,11 +30,30 @@ class GamesImport implements ToModel, WithHeadingRow, WithChunkReading
         $game = Game::create($attributes);
 
         if ($row['udvikler'] && strlen($row['udvikler']) > 1) {
-            $contributor = Contributor::firstOrCreate([
-                'name' => $row['udvikler'],
-            ]);
+            $developers = explode(',', $row['udvikler']);
+            $developers = array_map('trim', $developers);
 
-            $game->credits()->attach([$contributor->id => ['type' => 'developer']]);
+            foreach ($developers as $developer) {
+                $contributor = Contributor::firstOrCreate([
+                    'name' => $developer,
+                    'url' => $row['udviklers_url']
+                ]);
+
+                $game->credits()->attach([$contributor->id => ['type' => 'developer']]);
+            }
+        }
+
+        if ($row['udgiver'] && strlen($row['udgiver']) > 1) {
+            $publishers = explode(',', $row['udgiver']);
+            $publishers = array_map('trim', $publishers);
+
+            foreach ($publishers as $publisher) {
+                $game->publishers()->attach([
+                    Publisher::firstOrCreate([
+                        'name' => $publisher
+                    ])->id
+                ]);
+            }
         }
 
         if ($row['platform'] && strlen($row['platform']) > 1) {

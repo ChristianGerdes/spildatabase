@@ -20,8 +20,10 @@
     },
     "dependencies": {
         "algoliasearch": "^3.35.0",
+        "tailwindcss": "^1.1.2",
         "vue": "^2.6.10",
         "vue-instantsearch": "^2.5.0",
+        "vue-slider-component": "^3.0.41",
         "vue-template-compiler": "^2.6.10"
     }
 }

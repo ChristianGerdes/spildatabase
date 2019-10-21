@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="border-b flex items-center pb-8 mb-8 px-6">
+        <h1 class="text-4xl mb-1">Tilføj spil</h1>
+    </div>
+
     @if (auth()->user()->role == 1)
         <div class="bg-yellow-200 px-4 py-3 block rounded mb-8 text-yellow-700 border border-yellow-400 text-sm">
             Du har ikke adgang til at oprette spil, så de indsendte oplsyninger vil blive gennemgået af Det Kongelige Bibliotek inden publicering.

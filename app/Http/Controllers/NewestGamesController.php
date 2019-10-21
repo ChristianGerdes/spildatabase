@@ -10,6 +10,6 @@ class NewestGamesController extends Controller
     {
         $games = Game::published()->orderBy('published_at', 'desc')->take(25)->with('publishers', 'credits')->get();
 
-        return view('games.list', compact('games'));
+        return view('games.newest', compact('games'));
     }
 }

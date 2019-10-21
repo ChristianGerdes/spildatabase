@@ -17,6 +17,8 @@ Route::middleware(['auth', 'admin'])->group(function()
     Route::get('/games/create', 'GamesController@create')->name('games.create');
 });
 
+Route::redirect('/', '/games', 301);
+
 Route::get('/games/popular', 'PopularGamesController@index')->name('games.popular');
 Route::get('/games/newest', 'NewestGamesController@index')->name('games.newest');
 

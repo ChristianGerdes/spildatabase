@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="border-b flex items-center pb-8 mb-8 px-6">
+        <h1 class="text-4xl mb-1">Redigér spil</h1>
+    </div>
+
     <form action="{{ route('games.update', $game) }}" method="POST">
         <input type="hidden" name="_method" value="PUT">
         {!! csrf_field() !!}

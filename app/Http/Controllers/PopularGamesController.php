@@ -10,6 +10,6 @@ class PopularGamesController extends Controller
     {
         $games = Game::published()->inRandomOrder()->take(25)->with('publishers', 'credits')->get();
 
-        return view('games.list', compact('games'));
+        return view('games.popular', compact('games'));
     }
 }

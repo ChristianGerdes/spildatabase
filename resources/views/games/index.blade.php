@@ -16,6 +16,18 @@
                     <ais-configure :hits-per-page.camel="25"/>
 
                     <div>
+                        <div class="uppercase block font-medium text-sm text-gray-600 pb-3">Platform</div>
+                        <ais-refinement-list attribute="platforms.name" :limit="5" :show-more="true" :class-names="{
+                            'ais-RefinementList': 'mb-10',
+                            'ais-RefinementList-checkbox': 'ml-2 mr-4',
+                            'ais-RefinementList-label': 'block flex items-center justify-between border-t py-2 select-none hover:bg-gray-200 cursor-pointer',
+                            'ais-RefinementList-labelText': 'flex-1 text-sm truncate',
+                            'ais-RefinementList-count': 'bg-blue-100 text-blue-400 px-2 rounded-lg text-sm',
+                            'ais-RefinementList-showMore': 'text-sm mt-2 focus:outline-none',
+                        }"/>
+                    </div>
+
+                    <div>
                         <div class="uppercase block font-medium text-sm text-gray-600 pb-3">Krediteringer</div>
                         <ais-refinement-list attribute="contributors.name" :limit="5" :show-more="true" :class-names="{
                             'ais-RefinementList': 'mb-10',

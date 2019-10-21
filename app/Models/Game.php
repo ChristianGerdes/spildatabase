@@ -55,6 +55,12 @@ class Game extends Model
                     'name' => $publisher->name
                 ];
             })->toArray(),
+            'platforms' => $this->platforms->map(function($platform) {
+                return [
+                    'id' => $platform->pivot->platform_id,
+                    'name' => $platform->title,
+                ];
+            })->toArray(),
         ];
 
         return $this->transform($data);

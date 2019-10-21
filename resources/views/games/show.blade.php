@@ -12,7 +12,11 @@
             <div>
                 <h1 class="text-4xl">{{ $game->title }}</h1>
                 @if ($game->published_at)
-                    <div class="mt-1 text-gray-600">Published {{ $game->published_at->format('d. F Y') }}</div>
+                    <span class="mt-1 text-gray-600">Published {{ $game->published_at->format('d. F Y') }}</span>
+                @endif
+
+                @if ($game->url)
+                    <span>{{ $game->url }}</span>
                 @endif
             </div>
 

@@ -16,7 +16,7 @@
                 @endif
 
                 @if ($game->url)
-                    <span>{{ $game->url }}</span>
+                    <span class="text-sm text-blue-600">{{ $game->url }}</span>
                 @endif
             </div>
 
